@@ -7,11 +7,14 @@ class Mysql {
         console.log('clase inicializada');
         this.cnn = mysql.createConnection({
             host: 'localhost',
-            user: 'roota',
+            user: 'root',
             password: '',
             database: 'node_db'
         });
         this.conectarDb();
+    }
+    static getInstance() {
+        return this._instance || (this._instance = new this());
     }
     conectarDb() {
         this.cnn.connect((err) => {
